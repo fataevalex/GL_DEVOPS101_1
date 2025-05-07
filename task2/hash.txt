@@ -1,0 +1,4 @@
+d4aa0ec2a2fcca22b4d7c1c8a6989856377facf6
+This is my Git challenge file
+100644 d4aa0ec2a2fcca22b4d7c1c8a6989856377facf6 0	challenge.txt
+100644 6f24141ca4762f88692a41fc5b978bd259a0836a 0	hash.txt
