@@ -62,11 +62,11 @@ Usage:
 		// defer rpio.Close()
 
 		// Initialize traffic signals
-		// trafficSignals := map[string]*TrafficSignal{
-		// 	"red":   {Pin: 12, On: false},
-		// 	"amber": {Pin: 27, On: false},
-		// 	"green": {Pin: 22, On: false},
-		// }
+		trafficSignals := map[string]*TrafficSignal{
+			"red":   {Pin: 12, On: false},
+			"amber": {Pin: 27, On: false},
+			"green": {Pin: 22, On: false},
+		}
 
 		// // Initialize all pins as input
 		// for _, signal := range trafficSignals {
@@ -84,20 +84,21 @@ Usage:
 
 			case "red", "amber", "green":
 				log.Printf("payload=%s", payload)
-				// signal := trafficSignals[payload]
-				// pin := rpio.Pin(signal.Pin)
+				signal := trafficSignals[payload]
+				//pin := rpio.Pin(signal.Pin)
 
-				// if !signal.On {
-				// 	pin.Output()
-				// 	pin.High()
-				// 	signal.On = true
-				// } else {
-				// 	pin.Low()
-				// 	pin.Input()
-				// 	signal.On = false
-				// }
+				if !signal.On {
+					// 	pin.Output()
+					// 	pin.High()
+					signal.On = true
+				} else {
+					// 	pin.Low()
+					// 	pin.Input()
+					signal.On = false
+				}
 
-				return m.Send(fmt.Sprintf("Switched %s light %s", payload, map[bool]string{true: "on", false: "off"}))
+				// return m.Send(fmt.Sprintf("Switched %s light %s", payload, map[bool]string{true: "on", false: "off"}[signal.On]))
+				return m.Send(fmt.Sprintf("Switched to %s", payload))
 
 			default:
 				return m.Send("Usage: /s red|amber|green")
