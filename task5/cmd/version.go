@@ -10,12 +10,13 @@ import (
 )
 
 // appVersion Application Version
-var appVersion = "Version"
+var appVersion = "v0.0.1"
 
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
-	Use:   "version",
-	Short: "A brief description of your command",
+	Use:     "version",
+	Aliases: []string{"start"},
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
